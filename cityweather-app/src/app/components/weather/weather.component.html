@@ -1,0 +1,34 @@
+<div class="animated-bg">
+  <div class="overlay"></div>
+    <div class="center-box text-white container">
+
+      <h2 class="text-center mb-4">5-Day Forecast in {{specCity}}</h2>
+
+      <div *ngIf="forecastList && forecastList.length > 0" class="table-responsive">
+        <table class="table table-bordered table-hover table-striped align-middle">
+          <thead class="table-dark text-center">
+            <tr>
+              <th>Date (mm/dd/yyyy)</th>
+              <th>Temp (F)</th>
+              <th class="d-none d-sm-table-cell">Main</th>
+              <th class="d-none d-sm-table-cell">Description</th>
+              <th class="d-none d-sm-table-cell">Pressure</th>
+              <th class="d-none d-sm-table-cell">Humidity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let forecast of forecastList">
+              <td>{{ forecast.dt * 1000 | date: 'MM/dd/yyyy' }}</td>
+              <td>{{ forecast.main.temp }}</td>
+              <td class="d-none d-sm-table-cell">{{ forecast.weather[0]?.main }}</td>
+              <td class="d-none d-sm-table-cell">{{ forecast.weather[0]?.description }}</td>
+              <td class="d-none d-sm-table-cell">{{ forecast.main.pressure }}</td>
+              <td class="d-none d-sm-table-cell">{{ forecast.main.humidity }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+</div>

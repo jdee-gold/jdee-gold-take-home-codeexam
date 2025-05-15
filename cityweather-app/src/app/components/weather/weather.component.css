@@ -1,0 +1,11 @@
+.center-box {
+  width: 800px;
+  max-width: 800px;
+}
+
+@media (max-width: 576px) {
+  .center-box {
+    width: 90%;
+    padding: 1rem;
+  }
+}

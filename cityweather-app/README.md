@@ -20,7 +20,7 @@ A responsive Angular web application that allows users to log in using GitHub vi
 
 ## Tech Stack
 
-- **Angular 17+**
+- **Angular 16+**
 - **Bootstrap 5**
 - **Auth0 (GitHub Connection)**
 - **OpenWeatherMap API**

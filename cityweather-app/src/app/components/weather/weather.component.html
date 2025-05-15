@@ -6,24 +6,24 @@
 
       <div *ngIf="forecastList && forecastList.length > 0" class="table-responsive">
         <table class="table table-bordered table-hover table-striped align-middle">
-          <thead class="table-dark text-center">
+          <thead class="table-dark">
             <tr>
-              <th>Date (mm/dd/yyyy)</th>
-              <th>Temp (F)</th>
-              <th class="d-none d-sm-table-cell">Main</th>
-              <th class="d-none d-sm-table-cell">Description</th>
-              <th class="d-none d-sm-table-cell">Pressure</th>
-              <th class="d-none d-sm-table-cell">Humidity</th>
+              <th class="text-center">Date (mm/dd/yyyy)</th>
+              <th class="text-end">Temp (F)</th>
+              <th class="d-none d-sm-table-cell text-start">Main</th>
+              <th class="d-none d-sm-table-cell text-start">Description</th>
+              <th class="d-none d-sm-table-cell text-end">Pressure</th>
+              <th class="d-none d-sm-table-cell text-end">Humidity</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let forecast of forecastList">
-              <td>{{ forecast.dt * 1000 | date: 'MM/dd/yyyy' }}</td>
-              <td>{{ forecast.main.temp }}</td>
-              <td class="d-none d-sm-table-cell">{{ forecast.weather[0]?.main }}</td>
-              <td class="d-none d-sm-table-cell">{{ forecast.weather[0]?.description }}</td>
-              <td class="d-none d-sm-table-cell">{{ forecast.main.pressure }}</td>
-              <td class="d-none d-sm-table-cell">{{ forecast.main.humidity }}</td>
+              <td class="text-center">{{ forecast.dt * 1000 | date: 'MM/dd/yyyy' }}</td>
+              <td class="text-end">{{ forecast.main.temp }}</td>
+              <td class="d-none d-sm-table-cell text-start">{{ forecast.weather[0]?.main }}</td>
+              <td class="d-none d-sm-table-cell text-start">{{ forecast.weather[0]?.description }}</td>
+              <td class="d-none d-sm-table-cell text-end">{{ forecast.main.pressure }}</td>
+              <td class="d-none d-sm-table-cell text-end">{{ forecast.main.humidity }}</td>
             </tr>
           </tbody>
         </table>

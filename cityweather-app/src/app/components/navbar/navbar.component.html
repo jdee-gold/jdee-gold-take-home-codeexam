@@ -1,34 +1,25 @@
-<nav *ngIf="showNavbar" class="navbar navbar-expand-lg navbar-dark custom-navbar-color">
-    <div class="container-fluid">
-        <!-- Brand (non-clickable) -->
-        <span class="navbar-brand">
-            <img src="assets/cityweather.png" alt="CityWeather Logo" class="logo">
-        </span>
+<nav *ngIf="showNavbar" class="navbar navbar-dark custom-navbar-color">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+    <!-- Brand + Nav Links on the Left -->
+    <div class="d-flex align-items-center">
+      <span class="navbar-brand mb-0">
+        <img src="assets/cityweather.png" alt="CityWeather Logo" class="logo" title="Weather Forecast App" />
+      </span>
 
-        <!-- Toggler for mobile collapse -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Collapsible navbar content -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <!-- Left nav links -->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item" *ngIf="currentRoute !== '/home'">
-                    <a class="nav-link" routerLink="/home">Home</a>
-                </li>
-                <li class="nav-item" *ngIf="currentRoute !== '/weather'">
-                    <a class="nav-link" routerLink="/weather">Weather</a>
-                </li>
-            </ul>
-
-            <!-- Right logout button -->
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <button class="btn btn-outline-light" (click)="logout()">Logout</button>
-                </li>
-            </ul>
-        </div>
+      <!-- Nav Links -->
+      <ul class="navbar-nav flex-row ms-3">
+        <li class="nav-item me-3" *ngIf="currentRoute !== '/home'">
+          <a class="nav-link" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item" *ngIf="currentRoute !== '/weather'">
+          <a class="nav-link" routerLink="/weather">Weather</a>
+        </li>
+      </ul>
     </div>
+
+    <!-- Logout Button on the Right -->
+    <div>
+      <button class="btn btn-outline-light" (click)="logout()">Logout</button>
+    </div>
+  </div>
 </nav>

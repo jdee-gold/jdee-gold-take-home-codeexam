@@ -12,3 +12,7 @@ form {
   flex-direction: column;
   gap: 0.5rem;
 }
+
+.animated-bg {
+   height: calc(100vh - 86px);
+}

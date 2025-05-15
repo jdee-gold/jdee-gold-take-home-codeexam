@@ -3,6 +3,10 @@
   max-width: 800px;
 }
 
+.animated-bg {
+   height: calc(100vh - 86px);
+}
+
 @media (max-width: 576px) {
   .center-box {
     width: 90%;

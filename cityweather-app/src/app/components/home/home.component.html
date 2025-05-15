@@ -10,9 +10,9 @@
       </p>
     </div>
 
-    <form (submit)="searchCity(); $event.preventDefault()" class="w-100">
+    <form (submit)="searchCity();" class="w-100">
       <div class="mb-2">
-        <input type="text" class="form-control form-control-lg" [(ngModel)]="city" name="city" required
+        <input type="text" class="form-control form-control-lg" [(ngModel)]="city" (ngModelChange)="onCityInputChange($event)" name="city" required
           placeholder="Enter city" />
       </div>
 

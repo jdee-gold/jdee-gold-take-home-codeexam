@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { HomeComponent } from './components/home/home.component';
 import { WeatherComponent } from './components/weather/weather.component';
-import { AuthGuard } from '@auth0/auth0-angular';
+import { AuthGuard } from 'src/app/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },

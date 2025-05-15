@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -8,20 +9,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private auth: AuthService, private router: Router) { }
-  title = 'WeatherCityApp'
-  ngOnInit(): void {
-    this.auth.handleRedirectCallback().subscribe({
-      next: (result) => {
-        console.log('Redirect callback complete:', result);
-      },
-      error: (err) => {
-        console.error('Redirect error:', err);
-      }
-    });
+  showNavbar: boolean = false;
+
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+  ) {}
+
+  async ngOnInit() {
+    this.router.events
+      .pipe(
+        filter((event): event is NavigationEnd => event instanceof NavigationEnd)
+      )
+      .subscribe((event) => {
+        this.auth.isAuthenticated$.subscribe((isAuth) => {
+          this.updateNavbarVisibility(event.urlAfterRedirects, isAuth);
+        });
+      });
   }
 
-  get isLoginPage(): boolean {
-    return this.router.url === '/landing';
-  }
+  private updateNavbarVisibility(url: string, isAuth: boolean): void {
+  // Only show the navbar if user is authenticated and is on /home or /weather
+  this.showNavbar = isAuth && (url === '/home' || url === '/weather');
 }
+
+
+}
+

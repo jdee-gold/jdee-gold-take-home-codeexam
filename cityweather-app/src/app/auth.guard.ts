@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { CanActivate, Router, UrlTree  } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Observable, map, tap } from 'rxjs';
 
@@ -10,14 +10,16 @@ export class AuthGuard implements CanActivate {
 
   constructor(private auth: AuthService, private router: Router) {}
 
-  canActivate(): Observable<boolean> {
+  canActivate(): Observable<boolean | UrlTree> {
     return this.auth.isAuthenticated$.pipe(
-      tap(loggedIn => {
-        if (!loggedIn) {
-          this.router.navigate(['/landing']);
+      map(isAuth => {
+        if (isAuth) {
+          return true;
+        } else {
+          // Redirect to landing page if NOT authenticated
+          return this.router.createUrlTree(['/landing']);
         }
-      }),
-      map(loggedIn => loggedIn)
+      })
     );
   }
 }

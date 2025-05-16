@@ -1,4 +1,4 @@
-# CityWeather App
+# Weather Forecast App
 
 A responsive Angular web application that allows users to log in using GitHub via Auth0 and view a 5-day weather forecast for any city using the OpenWeatherMap API.
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { Router, NavigationEnd, Event } from '@angular/router';
 
@@ -11,6 +11,7 @@ export class NavbarComponent implements OnInit {
   isAuthenticated = false;
   currentRoute: string = '';
   showNavbar = false;
+  isUserLoggedIn = signal<boolean>(false);
 
   constructor(public auth: AuthService, private router: Router) { }
 
@@ -18,6 +19,7 @@ export class NavbarComponent implements OnInit {
     this.auth.isAuthenticated$.subscribe(loggedIn => {
       this.isAuthenticated = loggedIn;
       this.updateNavbarVisibility(this.router.url, loggedIn);
+      this.isUserLoggedIn.set(loggedIn);
     });
 
     // Set the initial route manually
@@ -36,6 +38,6 @@ export class NavbarComponent implements OnInit {
   }
 
   private updateNavbarVisibility(route: string, isAuth: boolean) {
-    this.showNavbar = isAuth && (route === '/home' || route === '/weather');
+    this.showNavbar = isAuth && (route === '/home' || route === '/weather' || route === '/landing');
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal, effect } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 
 
@@ -9,6 +9,19 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class LandingPageComponent {
   constructor(public auth: AuthService) { }
+  isAuthenticated = false;
+  isUserLoggedIn = signal<boolean>(false);
+
+  ngOnInit(): void {
+    this.auth.isAuthenticated$.subscribe(loggedIn => {
+      this.isAuthenticated = loggedIn;
+      this.isUserLoggedIn.set(loggedIn);
+    });
+
+  
+      console.log(`The user is: ${this.isUserLoggedIn()}`);
+  
+  }
 
   login() {
     this.auth.loginWithRedirect({

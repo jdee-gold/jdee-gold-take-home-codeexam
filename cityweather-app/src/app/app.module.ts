@@ -10,6 +10,10 @@ import { WeatherComponent } from './components/weather/weather.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CommonModule } from '@angular/common';
+import { MatCommonModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,7 @@ import { RouterModule } from '@angular/router';
     LandingPageComponent,
     WeatherComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +37,10 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     HttpClientModule,
     RouterModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
+    MatCommonModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

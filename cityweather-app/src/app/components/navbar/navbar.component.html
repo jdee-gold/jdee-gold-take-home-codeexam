@@ -11,8 +11,11 @@
         <li class="nav-item me-3" *ngIf="currentRoute !== '/home'">
           <a class="nav-link" routerLink="/home">Home</a>
         </li>
-        <li class="nav-item" *ngIf="currentRoute !== '/weather'">
+        <li class="nav-item me-3" *ngIf="currentRoute !== '/weather'">
           <a class="nav-link" routerLink="/weather">Weather</a>
+        </li>
+        <li class="nav-item" *ngIf="currentRoute !== '/landing' && isUserLoggedIn">
+           <a class="nav-link" routerLink="/landing">Welcome</a>
         </li>
       </ul>
     </div>

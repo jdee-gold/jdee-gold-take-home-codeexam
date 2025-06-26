@@ -10,6 +10,7 @@ import { filter } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
   showNavbar: boolean = false;
+  public title = 'cityweather-app';
 
   constructor(
     private auth: AuthService,
@@ -30,7 +31,7 @@ export class AppComponent implements OnInit {
 
   private updateNavbarVisibility(url: string, isAuth: boolean): void {
   // Only show the navbar if user is authenticated and is on /home or /weather
-  this.showNavbar = isAuth && (url === '/home' || url === '/weather');
+  this.showNavbar = isAuth && (url === '/home' || url === '/weather' || url === '/landing');
 }
 
 

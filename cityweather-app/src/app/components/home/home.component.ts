@@ -14,7 +14,7 @@ export class HomeComponent {
   errorMessage: string = '';
   forecastList: any[] = [];
 
-  constructor(public auth: AuthService, private router: Router, private weatherService: WeatherService) { }
+  constructor(public auth: AuthService, private router: Router, public weatherService: WeatherService) { }
 
   ngOnInit(): void {
     this.auth.user$.subscribe(profile => {

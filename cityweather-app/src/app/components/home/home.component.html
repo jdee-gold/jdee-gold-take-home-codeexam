@@ -23,6 +23,9 @@
       <button class="btn btn-primary btn-lg w-100" type="submit">
         Display Weather
       </button>
+
+      <mat-spinner style="margin: 0 auto;" mode = "indeterminate" [diameter]="30" *ngIf="weatherService.isLoading()">Loading forecast...</mat-spinner>
+
     </form>
 
 
